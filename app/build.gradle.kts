@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -56,6 +57,23 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.androidx.navigation.compose)
 
+    // For navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Coil -> For showing image through url
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
+    // For authentication with Google using Credential Manager
+    implementation ("com.google.android.gms:play-services-auth:21.2.0")
+    implementation ("androidx.credentials:credentials:1.2.2")
+    implementation ("androidx.credentials:credentials-play-services-auth:1.2.2")
+    implementation ("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+    implementation(libs.firebase.auth)
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.8")
+
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -65,6 +83,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
