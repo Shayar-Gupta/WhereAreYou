@@ -1,4 +1,4 @@
-package com.example.whereareyou
+package com.example.whereareyou.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -36,7 +35,7 @@ fun OnboardingScreen(onFinish: () -> Unit) {
         HorizontalPager(
             state = pagerState,
             modifier = Modifier.fillMaxSize(),
-            userScrollEnabled = pagerState.currentPage < lastPage // Disables backscroll
+            userScrollEnabled = pagerState.currentPage < lastPage // Disables back scroll
         ) { pageIndex ->
             val page = pages[pageIndex]
             Column(
@@ -105,21 +104,22 @@ fun OnboardingScreen(onFinish: () -> Unit) {
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 100.dp)
         ) {
-            Button(
-                onClick = {
-                    onFinish() // Handle Google Sign Up logic here
-                },
-                shape = RoundedCornerShape(16.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 32.dp)
-            ) {
-                Text(
-                    text = "Sign Up with Google",
-                    fontSize = 16.sp,
-                    color = Color.White
-                )
-            }
+            CompactSwipeToLogin(onSignIn = { onFinish() })
+//            Button(
+//                onClick = {
+//                    onFinish() // Handle Google Sign Up logic here
+//                },
+//                shape = RoundedCornerShape(16.dp),
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(horizontal = 32.dp)
+//            ) {
+//                Text(
+//                    text = "Sign Up with Google",
+//                    fontSize = 16.sp,
+//                    color = Color.White
+//                )
+//            }
         }
     }
 }
